@@ -12,18 +12,18 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - Enemy
   - Walls
   - Mask
   - VisionCone
+  - Object
+  - ViewCover
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Out of View Post Process
   - 
   - 
   - 

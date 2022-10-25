@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerHide : MonoBehaviour
 {
+    [SerializeField] private FieldOfView fieldOfView;
+
     public bool isHiding;
 
     //Temporary Hiding Color Change variables
@@ -33,6 +35,7 @@ public class PlayerHide : MonoBehaviour
         if (collision.gameObject.tag == "CanHideIn")
         {
             isHiding = true;
+            fieldOfView.gameObject.SetActive(false);
             sr.color = Color.gray;
         }
     }
@@ -44,12 +47,14 @@ public class PlayerHide : MonoBehaviour
         if (collision.gameObject.tag == "CanHideIn")
         {
             isHiding = false;
+            fieldOfView.gameObject.SetActive(true);
             sr.color = Color.white;
         }
 
         if (collision.gameObject.tag == "CanHideInteractable")
         {
             isHiding = false;
+            fieldOfView.gameObject.SetActive(true);
             sr.color = Color.white;
         }
     }

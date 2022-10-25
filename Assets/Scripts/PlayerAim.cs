@@ -17,9 +17,6 @@ public class PlayerAim : MonoBehaviour
 
         Vector3 mousePosition = Input.mousePosition;
 
-        Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-        transform.right = direction;
-
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         Vector3 vec = worldPosition;
