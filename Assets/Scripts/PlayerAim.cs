@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
-    [SerializeField] private FieldOfView fieldOfView;
+    public GameObject plyr;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.position = plyr.transform.position;
 
         Vector3 mousePosition = Input.mousePosition;
 
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        Vector3 vec = worldPosition;
-        vec.z = 0f;
+        RotateSelf(worldPosition);
+    }
 
-        Vector3 aimDir = (vec - transform.position).normalized;
-        Debug.Log(aimDir);
-
-        fieldOfView.SetAimDirection(aimDir);
-        fieldOfView.SetOrigin(transform.position);
+    void RotateSelf(Vector3 mousePos)
+    {
+        Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+        transform.right = direction;
     }
 }

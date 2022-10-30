@@ -5,48 +5,70 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
+
+    [Header("Cone Properties")]
+    public float viewDistance = 50.0f;
+    public float fov;
+    public float targetFov;
+    public int rayCount;
+
     private Mesh mesh;
-    private Vector3 origin;
-    private float startingAngle;
-    private float fov;
+    private Vector3 origin = Vector3.zero;
+    public float startingAngle;
+
+
+    public GameObject coneObj;
+    public LayerMask walls;
+
     // Start is called before the first frame update
     private void Start()
     {
         mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
-        fov = 90.0f;
+        coneObj.GetComponent<MeshFilter>().mesh = mesh;
         origin = Vector3.zero;
     }
+
     private void LateUpdate()
     {
-        int rayCount = 50;
-        float angle = startingAngle + 90;
+        fov = targetFov;
+
+        coneObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        origin = transform.position;
+        Vector2 origin2 = new Vector2(transform.position.x, transform.position.y);
+
+        float angle = (transform.rotation.eulerAngles.z) + (fov / 2);
         float angleIncrease = fov / rayCount;
-        float viewDistance = 50.0f;
 
-
-        Vector3[] vertices = new Vector3[rayCount + 1 + 1];
+        Vector3[] vertices = new Vector3[rayCount + 2];
         Vector2[] uv = new Vector2[vertices.Length];
         int[] triangles = new int[rayCount * 3];
 
-        vertices[0] = origin;
+        vertices[0] = Vector3.zero;
+        //
+        uv[0] = Vector2.zero;
 
         int vertexIndex = 1;
         int triangleIndex = 0;
         for (int i = 0; i <= rayCount; i++)
         {
             Vector3 vertex;
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance, layerMask);
+            Vector3 rayAngle = GetVectorFromAngle(angle);
 
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, rayAngle, viewDistance, layerMask);
             if (raycastHit2D.collider == null)
             {//No Hit
-                vertex = origin + GetVectorFromAngle(angle) * viewDistance;
+                vertex = GetVectorFromAngle(angle) * viewDistance;
             }
             else
             {// Hit
-                vertex = raycastHit2D.point;
+                vertex = (raycastHit2D.point - origin2) + new Vector2(rayAngle.normalized.x, rayAngle.normalized.y);
+                //vertex = raycastHit2D.point;
             }
             vertices[vertexIndex] = vertex;
+            //
+            uv[vertexIndex] = rayAngle;
+
 
             if (i > 0)
             {
