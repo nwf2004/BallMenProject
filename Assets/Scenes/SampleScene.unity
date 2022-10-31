@@ -4044,7 +4044,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1181813526, guid: 37b49b4caf63d484eae1f4204d216383, type: 3}
       propertyPath: orthographic size
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1181813526, guid: 37b49b4caf63d484eae1f4204d216383, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -4100,7 +4100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8080148006252134927, guid: 37b49b4caf63d484eae1f4204d216383, type: 3}
       propertyPath: orthographic size
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8080148006252134927, guid: 37b49b4caf63d484eae1f4204d216383, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -4128,7 +4128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8080148007305117718, guid: 37b49b4caf63d484eae1f4204d216383, type: 3}
       propertyPath: orthographic size
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8080148007305117718, guid: 37b49b4caf63d484eae1f4204d216383, type: 3}
       propertyPath: m_BackGroundColor.b
