@@ -5,6 +5,7 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask enemyMask;
 
     [Header("Cone Properties")]
     public float viewDistance = 50.0f;
@@ -16,9 +17,12 @@ public class FieldOfView : MonoBehaviour
     private Vector3 origin = Vector3.zero;
     public float startingAngle;
 
+    public Transform personalView;
 
     public GameObject coneObj;
     public LayerMask walls;
+
+    public string EnemyTag = "Enemy";
 
     // Start is called before the first frame update
     private void Start()
@@ -59,12 +63,34 @@ public class FieldOfView : MonoBehaviour
             if (raycastHit2D.collider == null)
             {//No Hit
                 vertex = GetVectorFromAngle(angle) * viewDistance;
+                //Debug.DrawRay(origin, rayAngle.normalized * viewDistance, Color.red, 0.5f);
             }
             else
             {// Hit
                 vertex = (raycastHit2D.point - origin2) + new Vector2(rayAngle.normalized.x, rayAngle.normalized.y);
+                //Debug.DrawLine(origin, raycastHit2D.point, Color.red, 0.5f);
                 //vertex = raycastHit2D.point;
             }
+
+            RaycastHit2D scanRay = Physics2D.Raycast(origin, rayAngle, viewDistance, enemyMask);
+
+            if (scanRay.collider != null)
+            {
+
+                if (scanRay.collider.tag == EnemyTag)
+                {
+                    scanRay.collider.GetComponent<enemyHealth>().enemyHP -= Time.deltaTime;
+                }
+
+                Debug.DrawLine(origin, scanRay.point, Color.red, 0.1f);
+            }
+            else
+            {
+                Debug.DrawRay(origin, rayAngle.normalized * viewDistance, Color.red, 0.1f);
+            }
+
+            
+
             vertices[vertexIndex] = vertex;
             //
             uv[vertexIndex] = rayAngle;

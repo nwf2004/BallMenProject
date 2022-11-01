@@ -59,10 +59,5 @@ public class PlayerMovement : MonoBehaviour
         originalSpeed = sprintSpeed;
     }
 
-    void RotateSelf(Vector3 mousePos)
-    {
-        Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
-        transform.right = direction;
-    }
 }
 
