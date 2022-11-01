@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ffddd2fc37f46f3ae3b18f69b19d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashlightBattery: 500
+  flashlightBattery: 300
   flashlightIsOn: 1
   visionCone: {fileID: 1404661139}
 --- !u!1 &33501908
