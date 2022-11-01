@@ -6,6 +6,7 @@ public class enemyHealth : MonoBehaviour
 {
     public float enemyHP = 100;
     public LayerMask visionCone;
+    public GameObject EnemySprite;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class enemyHealth : MonoBehaviour
     {
             if (enemyHP <= 0.0f)
             {
+            Destroy(EnemySprite);
                 Destroy(gameObject);
             }
     }
