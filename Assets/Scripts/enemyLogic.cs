@@ -262,7 +262,7 @@ public class enemyLogic : MonoBehaviour
         }
     }
 
-    void gotTarget(Transform foundTarget)
+    public void gotTarget(Transform foundTarget)
     {
         newTarget.Invoke();
         target = foundTarget;
