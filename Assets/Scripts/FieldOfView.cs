@@ -6,6 +6,8 @@ public class FieldOfView : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private Material lightMaterial;
+    [SerializeField] private Material brightLightMaterial;
 
     [Header("Cone Properties")]
     public float viewDistance = 50.0f;
@@ -14,6 +16,7 @@ public class FieldOfView : MonoBehaviour
     public int rayCount;
 
     private Mesh mesh;
+    private MeshRenderer myRend;
     private Vector3 origin = Vector3.zero;
     public float startingAngle;
 
@@ -23,13 +26,20 @@ public class FieldOfView : MonoBehaviour
     public LayerMask walls;
 
     public string EnemyTag = "Enemy";
+    private bool isAttacking = false;
 
     // Start is called before the first frame update
     private void Start()
     {
         mesh = new Mesh();
         coneObj.GetComponent<MeshFilter>().mesh = mesh;
+        myRend = coneObj.GetComponent<MeshRenderer>();
         origin = Vector3.zero;
+    }
+
+    private void Update()
+    {
+        CheckInputForAttack();
     }
 
     private void LateUpdate()
@@ -75,11 +85,12 @@ public class FieldOfView : MonoBehaviour
             RaycastHit2D scanRay = Physics2D.Raycast(origin, rayAngle, viewDistance, enemyMask);
 
             if (scanRay.collider != null)
-            {
+            { 
 
-                if (scanRay.collider.tag == EnemyTag)
+                if (scanRay.collider.tag == EnemyTag && isAttacking)
                 {
                     scanRay.collider.GetComponent<enemyHealth>().enemyHP -= Time.deltaTime;
+                    scanRay.collider.GetComponent<enemyLogic>().gotTarget(gameObject.transform); ;
                 }
 
                 Debug.DrawLine(origin, scanRay.point, Color.red, 0.1f);
@@ -117,6 +128,25 @@ public class FieldOfView : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;
+    }
+
+    void CheckInputForAttack()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Material[] materials = myRend.materials;
+            materials[1] = brightLightMaterial;
+            myRend.materials = materials;
+            isAttacking = true;
+        }
+        else
+        {
+            Material[] materials = myRend.materials;
+            materials[1] = lightMaterial;
+            myRend.materials = materials;
+            isAttacking = false;
+            coneObj.GetComponent<MeshRenderer>().materials[1] = lightMaterial;
+        }
     }
 
     public void SetOrigin(Vector3 Origin)
