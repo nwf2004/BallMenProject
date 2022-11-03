@@ -7,6 +7,7 @@ TagManager:
   - CanHideIn
   - Enemy
   - Horror
+  - candy
   layers:
   - Default
   - TransparentFX
