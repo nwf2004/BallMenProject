@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sanity : MonoBehaviour
 {
     public bool inHorror;
 
+    [SerializeField] Slider slider; //So the values show up on the slider
 
     public float sanity;
     public float maxSanity;
@@ -30,6 +32,7 @@ public class Sanity : MonoBehaviour
     {
         sanity -= sanityDrain * Time.deltaTime;
         Debug.Log(sanity);
+        slider.value = sanity / 100; //So the values show up on the slider
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
