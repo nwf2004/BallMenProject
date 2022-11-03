@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CanHideIn
   - Enemy
+  - Horror
   layers:
   - Default
   - TransparentFX
