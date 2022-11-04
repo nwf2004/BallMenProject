@@ -3366,6 +3366,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
       value: Horror (6)
@@ -8994,6 +8998,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
       value: Horror (4)
@@ -9277,6 +9285,15 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 1061207932}
   sprintSpeed: 10
+  slider: {fileID: 1648027805}
+  stamina: 0
+  maxStamina: 100
+  staminaDrain: 20
+  recovery: 10
+  cd: 0
+  originalcd: 5
+  sprinting: 0
+  canSprint: 0
 --- !u!50 &1061207932
 Rigidbody2D:
   serializedVersion: 4
@@ -10606,6 +10623,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
       value: Horror (3)
@@ -11557,6 +11578,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
       value: Horror (1)
@@ -12126,6 +12151,10 @@ PrefabInstance:
     - target: {fileID: 5548193897341809059, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
@@ -15978,6 +16007,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
       value: Horror (2)
@@ -18334,6 +18367,10 @@ PrefabInstance:
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Color.r
       value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
