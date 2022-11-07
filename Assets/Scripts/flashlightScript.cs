@@ -4,54 +4,103 @@ using UnityEngine;
 
 public class flashlightScript : MonoBehaviour
 {
-
-    public float flashlightBattery = 100;
+    public float startingFlashlightBattery = 50;
+    [SerializeField]
+    private float flashlightBattery;
     public bool flashlightIsOn = true;
+    private bool flashlightWason = true;
     public GameObject visionCone;
+    private bool isThrowingFlashlight = false;
+
+    [SerializeField]
+    private FieldOfView FOV;
     // Start is called before the first frame update
     void Start()
     {
-        
+        flashlightBattery = startingFlashlightBattery;
+        FOV.viewDistance = 22;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (flashlightBattery > 22)
         {
-            ToggleFlashlight();
+            FOV.viewDistance = 22;
         }
-        if (flashlightIsOn && flashlightBattery > 0)
+        else
+        {
+            FOV.viewDistance = flashlightBattery;
+        }
+
+        if (FOV.flashlightReady == true && flashlightBattery > 0 && !(FOV.totalFlashlights <= 0) )
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                ToggleFlashlight();
+            }
+        }
+        if (flashlightIsOn)
         {
             visionCone.SetActive(true);
-            flashlightBattery -= 10 * Time.deltaTime;
+            flashlightBattery -= 2 * Time.deltaTime;
         }
         else
         {
             visionCone.SetActive(false);
         }
+        if (flashlightIsOn && flashlightBattery <= 0)
+            ToggleFlashlight();
+        if (flashlightIsOn && (FOV.totalFlashlights <= 0))
+            ToggleFlashlight();
+        
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             flashlightBattery += 30;
         }
-
+        CheckInputForAttack();
         
     }
 
     void ToggleFlashlight()
     {
-        if (flashlightIsOn)
-        {
-            flashlightIsOn = false;
 
-        }
-        else
-        {
-            if (flashlightBattery > 0)
-            { 
-                flashlightIsOn = true;
+            if (flashlightIsOn)
+            {
+                flashlightIsOn = false;
+
             }
+            else
+            {
+                if (flashlightBattery > 0)
+                {
+                    flashlightIsOn = true;
+                }
+            }
+        
+    }
+
+    void CheckInputForAttack()
+    {
+        if (FOV.flashlightReady == false && !isThrowingFlashlight)
+        {
+            flashlightWason = false;
+            isThrowingFlashlight = true;
+            if (flashlightIsOn)
+            {
+                flashlightWason = true;
+                ToggleFlashlight();
+            }
+            flashlightBattery = startingFlashlightBattery;
+        }
+        if (isThrowingFlashlight && FOV.flashlightReady)
+        {
+            if (flashlightWason && FOV.flashlightReady == true)
+            {
+                ToggleFlashlight();
+            }
+            isThrowingFlashlight = false;
         }
     }
 }

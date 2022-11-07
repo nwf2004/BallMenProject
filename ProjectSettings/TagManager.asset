@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CanHideIn
   - Enemy
+  - PlayerAim
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - ViewCover
   - Door
   - Floor
-  - 
+  - Bullet
   - 
   - Out of View Post Process
   - 

@@ -2,54 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FieldOfView : MonoBehaviour
+public class SimpleFieldOfView : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private Material lightMaterial;
-    [SerializeField] private Material brightLightMaterial;
-
     [Header("Cone Properties")]
     public float viewDistance = 50.0f;
     public float fov;
     public float targetFov;
     public int rayCount;
 
-    [Header("Throwing Flashlights")]
-    public GameObject flashLight;
-    public float shootSpeed;
-    public float firingSpeed;
-    private GameObject newflashLight;
-    public bool flashlightReady = true;
-    public float totalFlashlights = 20.0f;
+    [SerializeField]
+    private FieldOfView playerFOV;
 
+    private float speeeen = 0;
     private Mesh mesh;
-    private MeshRenderer myRend;
     private Vector3 origin = Vector3.zero;
     public float startingAngle;
 
-    public Transform personalView;
-
     public GameObject coneObj;
     public LayerMask walls;
-
-    public string EnemyTag = "Enemy";
-    private bool isAttacking = false;
-    [SerializeField]
-    private flashlightScript FlashLightScript;
-
     // Start is called before the first frame update
     private void Start()
     {
+        playerFOV = GameObject.Find("PlayerAim").GetComponent<FieldOfView>();
         mesh = new Mesh();
         coneObj.GetComponent<MeshFilter>().mesh = mesh;
-        myRend = coneObj.GetComponent<MeshRenderer>();
         origin = Vector3.zero;
-    }
-
-    private void Update()
-    {
-        CheckInputForAttack();
+        viewDistance = playerFOV.viewDistance;
     }
 
     private void LateUpdate()
@@ -92,29 +71,11 @@ public class FieldOfView : MonoBehaviour
                 //vertex = raycastHit2D.point;
             }
 
-            if (FlashLightScript.flashlightIsOn)
-            {
-                RaycastHit2D scanRay = Physics2D.Raycast(origin, rayAngle, viewDistance, enemyMask);
 
-                if (scanRay.collider != null)
-                {
-
-                    if (scanRay.collider.tag == EnemyTag)
-                    {
-                        scanRay.collider.GetComponent<enemyLogic>().gotTarget(gameObject.transform); ;
-                    }
-
-                    Debug.DrawLine(origin, scanRay.point, Color.red, 0.1f);
-                }
-                else
-                {
-                    Debug.DrawRay(origin, rayAngle.normalized * viewDistance, Color.red, 0.1f);
-                }
-
-            }
+            
 
             vertices[vertexIndex] = vertex;
-            //
+            
             uv[vertexIndex] = rayAngle;
 
 
@@ -141,28 +102,10 @@ public class FieldOfView : MonoBehaviour
         mesh.triangles = triangles;
     }
 
-    void CheckInputForAttack()
+    private void Update()
     {
-        if (Input.GetMouseButton(0) && flashlightReady == true && !(totalFlashlights <= 0) )
-        {
-            totalFlashlights -= 1;
-            newflashLight = Instantiate(flashLight);
-            newflashLight.transform.position = transform.position;
-            StartCoroutine(fireRate());
-           
-            /*Material[] materials = myRend.materials;
-            materials[1] = brightLightMaterial;
-            myRend.materials = materials;
-            isAttacking = true;*/
-        }
-        else
-        {
-            /*Material[] materials = myRend.materials;
-            materials[1] = lightMaterial;
-            myRend.materials = materials;
-            isAttacking = false;
-            coneObj.GetComponent<MeshRenderer>().materials[1] = lightMaterial;*/
-        }
+        speeeen += 2;
+        transform.rotation = Quaternion.Euler(0, 0, speeeen);
     }
 
     public void SetOrigin(Vector3 Origin)
@@ -189,13 +132,4 @@ public class FieldOfView : MonoBehaviour
 
         return n;
     }
-
-    IEnumerator fireRate()
-    {
-        flashlightReady = false;
-        yield return new WaitForSeconds(firingSpeed);
-        flashlightReady = true;
-    }
 }
-
-

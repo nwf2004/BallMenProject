@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class enemyHealth : MonoBehaviour
 {
-    public float enemyHP = 100;
+    public float enemyHP = 5;
     public LayerMask visionCone;
     public GameObject EnemySprite;
 
@@ -22,5 +22,15 @@ public class enemyHealth : MonoBehaviour
             Destroy(EnemySprite);
                 Destroy(gameObject);
             }
+    }
+
+    public float getEnemyHP()
+    {
+        return enemyHP;
+    }
+
+    public void setEnemyHP(float newValue)
+    {
+        enemyHP = newValue;
     }
 }

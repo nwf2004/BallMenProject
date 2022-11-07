@@ -8,6 +8,9 @@ public class enemyLogic : MonoBehaviour
 {
     [Header("Pathfinding")]
     public Transform target;
+    public Transform[] pathPositions;
+    public Transform nextPos;
+    public int currentPos = 0;
     public float pathUpdateRate;
     public float moveSpeed;
     public float turnSpeed;
@@ -18,6 +21,7 @@ public class enemyLogic : MonoBehaviour
     public bool reachedEnd;
     Seeker mySeeker;
     Rigidbody2D myBody;
+    public GameObject playerAimObject;
 
     [Header("Enemy Vision")]
     public float viewDist;
@@ -55,6 +59,7 @@ public class enemyLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nextPos = pathPositions[currentPos];
         mySeeker = GetComponent<Seeker>();
         myBody = GetComponent<Rigidbody2D>();
         InvokeRepeating("pathUpdate", pathUpdateRate, pathUpdateRate);
@@ -67,6 +72,7 @@ public class enemyLogic : MonoBehaviour
         Quaternion randRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, Random.Range(0, 360));
         transform.rotation = randRotation;
 
+        playerAimObject = GameObject.FindGameObjectWithTag("PlayerAim");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         InvokeRepeating("distCheck", Random.Range(0, 5), 5);
     }
@@ -93,9 +99,16 @@ public class enemyLogic : MonoBehaviour
             distToTarget = Vector2.Distance(myBody.position, target.position);
         }
 
-        if(currentWaypoint > myPath.vectorPath.Count - 1 || distToTarget < stopDistance)
+
+        if (currentWaypoint > myPath.vectorPath.Count - 1 || distToTarget < stopDistance)
         {
             reachedEnd = true;
+            //Debug.Log(target.transform);
+            if (target.transform != playerAimObject.transform)
+            {
+                NextPos();
+                target = nextPos;
+            }
         }
         else
         {
@@ -331,6 +344,20 @@ public class enemyLogic : MonoBehaviour
         else
         {
             culled = false;
+        }
+    }
+
+    void NextPos()
+    {
+        currentPos++;
+        if (currentPos > pathPositions.Length - 1)
+        {
+            currentPos = 0;
+            nextPos = pathPositions[currentPos];
+        }
+        else
+        {
+            nextPos = pathPositions[currentPos];
         }
     }
 
