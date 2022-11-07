@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2591071742125411934}
   - component: {fileID: 2591071742125411929}
   - component: {fileID: 2591071742125411928}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Square
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 537177934804095660}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,6 +207,7 @@ MonoBehaviour:
   fov: 0
   targetFov: 60
   rayCount: 75
+  playerFOV: {fileID: 0}
   startingAngle: 0
   coneObj: {fileID: 8518891385136636599}
   walls:
@@ -226,7 +227,7 @@ GameObject:
   - component: {fileID: 2771564469937022872}
   m_Layer: 0
   m_Name: FieldOfView
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
