@@ -7,11 +7,13 @@ public class enemyGoTo : MonoBehaviour
     public GameObject mainEnemy;
 
     public float OldXPos = 0;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         transform.position = mainEnemy.transform.position;
+
+        transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z - mainEnemy.transform.rotation.z);
 
         OldXPos = transform.position.x;
     }
@@ -33,6 +35,10 @@ public class enemyGoTo : MonoBehaviour
         }
         OldXPos = transform.position.x;
 
-        
+        transform.rotation = Quaternion.Euler(0, 0, 0 - mainEnemy.transform.rotation.z);
     }
+
 }
+    
+
+

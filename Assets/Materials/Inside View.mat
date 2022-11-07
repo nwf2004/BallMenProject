@@ -23,7 +23,7 @@ Material:
   m_Name: Inside View
   m_Shader: {fileID: -6465566751694194690, guid: 3c9d04c7703b92e4387ff36f66745c15, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
