@@ -56,7 +56,7 @@ public class thrownFlashlight : MonoBehaviour
         {
             GameObject currentEnemy = collision.gameObject;
             Vector3 Direction = (currentEnemy.transform.position - transform.position).normalized;
-            currentEnemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(Direction.x * 6000, Direction.y * 6000));
+            currentEnemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(Direction.x * 60, Direction.y * 60));
             currentEnemy.GetComponent<enemyHealth>().enemyHP -= 1;
             GameObject newEmptyEmemy = Instantiate(hitEnemy);
             newEmptyEmemy.transform.position = gameObject.transform.position;
@@ -76,7 +76,7 @@ public class thrownFlashlight : MonoBehaviour
     IEnumerator travelTime()
     {
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(4.0f);
         Destroy(gameObject);
     }
 }

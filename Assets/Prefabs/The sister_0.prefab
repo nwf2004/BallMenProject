@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8105254978323291449}
   - component: {fileID: 8105254978323291450}
   - component: {fileID: 8105254978323291451}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: The sister_0
-  m_TagString: Untagged
+  m_TagString: Sister
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

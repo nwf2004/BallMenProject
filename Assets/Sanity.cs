@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Sanity : MonoBehaviour
 {
@@ -98,6 +99,11 @@ public class Sanity : MonoBehaviour
         {
             FOV.totalFlashlights += 20.0f;
             Destroy(collision.gameObject); //Destroy the piece of candy
+        }
+
+        if (collision.gameObject.tag == "Sister")
+        {
+            SceneManager.LoadScene("EndScene");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
