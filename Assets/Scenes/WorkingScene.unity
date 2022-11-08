@@ -57676,7 +57676,7 @@ GameObject:
   - component: {fileID: 1127980751}
   m_Layer: 11
   m_Name: unmeaty furniture_2 (2)
-  m_TagString: Untagged
+  m_TagString: CanHideIn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57706,7 +57706,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.034248352, y: -0.06164737}
@@ -57762,7 +57762,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: -1349693364, guid: 83e7bcfcc488b2246a515fdb4afeb4ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97687,7 +97687,7 @@ GameObject:
   - component: {fileID: 2116876266}
   m_Layer: 11
   m_Name: unmeaty furniture_2 (3)
-  m_TagString: Untagged
+  m_TagString: CanHideIn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97717,7 +97717,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.004059568, y: -0.061647356}
@@ -97773,7 +97773,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: -1349693364, guid: 83e7bcfcc488b2246a515fdb4afeb4ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
