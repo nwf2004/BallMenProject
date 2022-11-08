@@ -28,6 +28,19 @@ public class PlayerMovement : MonoBehaviour
     public bool sprinting;
     public bool canSprint;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+
+    public AudioSource walkSource;
+    public AudioSource sprintSource;
+
+    //public AudioClip walkClip;
+    //public AudioClip sprintClip;
+    public AudioClip breathClip;
+
+    public bool isMoving = false;
+    public bool isSprinting = false;
+
     private void Start()
     {
         originalSpeed = moveSpeed;
@@ -56,11 +69,13 @@ public class PlayerMovement : MonoBehaviour
         {
             sprinting = false;
             canSprint = false;
+            audioSource.PlayOneShot(breathClip, .5f); //When you are out of stamina breathe heavily
         }
 
         if (!canSprint)
         {
             cd -= 1 * Time.deltaTime;
+            
         }
         
         if(cd <= 0)
@@ -81,21 +96,65 @@ public class PlayerMovement : MonoBehaviour
             stamina = maxStamina;
             
         }
+
+        //Movement Sound Code
+        if (!sprinting && rb.velocity.x != 0 || rb.velocity.y != 0 && !sprinting) //If you aren't sprinting but you are moving
+        {
+            isMoving = true;
+        } else
+        {
+            isMoving = false;
+        }
+        if (isMoving)
+        {
+            if (!walkSource.isPlaying)
+            {
+                walkSource.Play();
+            }
+        } else
+        {
+            walkSource.Stop();
+        }
+
+        //Sprinting and sound
+        if (sprinting && rb.velocity.x != 0 || rb.velocity.y != 0 && sprinting) //If you aren't sprinting but you are moving
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
+        }
+        if (isSprinting)
+        {
+            if (!sprintSource.isPlaying)
+            {
+                sprintSource.Play();
+            }
+        }
+        else
+        {
+            sprintSource.Stop();
+        }
     }
 
     void FixedUpdate()
     {
         //Processing Calculations
         Move();
-        if (Input.GetKey(KeyCode.LeftShift) && canSprint)
+
+       
+        if (Input.GetKey(KeyCode.LeftShift) && canSprint) //If you are sprinting
         {
             Sprint();
             sprinting = true;
+            
         }
-        else
+        else //If you aren't sprinting
         {
-            originalSpeed = moveSpeed;
+            originalSpeed = moveSpeed; 
             sprinting = false;
+            
         }
 
     }

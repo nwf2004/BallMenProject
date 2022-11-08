@@ -20,6 +20,16 @@ public class Sanity : MonoBehaviour
 
     public float hitDrain;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip candyClip;
+    public AudioClip hit1Clip;
+    public AudioClip hit2Clip;
+    public AudioClip heartbeatClip;
+
+    public AudioSource sanitySource; //Heartbeat when low sanity
+    public bool isLowSanity = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +43,27 @@ public class Sanity : MonoBehaviour
         sanity -= sanityDrain * Time.deltaTime;
         //Debug.Log(sanity);
         slider.value = sanity / 100; //So the values show up on the slider
+
+        //Heartbeat for low sanity
+        if (sanity <= 40) //If you aren't sprinting but you are moving
+        {
+            isLowSanity = true;
+        }
+        else
+        {
+            isLowSanity = false;
+        }
+        if (isLowSanity)
+        {
+            if (!sanitySource.isPlaying)
+            {
+                sanitySource.Play();
+            }
+        }
+        else
+        {
+            sanitySource.Stop();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,6 +80,7 @@ public class Sanity : MonoBehaviour
         if (collision.gameObject.tag == "candy")
         {
             sanity += restore;
+            audioSource.PlayOneShot(candyClip, .1f); //Play candy eating sound
             Debug.Log("Health restored");
             Destroy(collision.gameObject); //Destroy the piece of candy
 
@@ -76,6 +108,8 @@ public class Sanity : MonoBehaviour
         {
             Debug.Log("Hit by Enemy");
             sanity -= hitDrain;
+            //play hit heartbeat
+            audioSource.PlayOneShot(heartbeatClip, .5f);
         }
     }
 }
