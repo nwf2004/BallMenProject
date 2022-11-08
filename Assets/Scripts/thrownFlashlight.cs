@@ -20,6 +20,13 @@ public class thrownFlashlight : MonoBehaviour
     [SerializeField]
     private GameObject shatterParticle;
 
+    [Header("Audio")]
+    public GameObject hitWall;
+    public GameObject hitEnemy;
+
+
+
+
     //Speed of flashLight
     Vector2 shootVector;
     // Start is called before the first frame update
@@ -51,6 +58,13 @@ public class thrownFlashlight : MonoBehaviour
             Vector3 Direction = (currentEnemy.transform.position - transform.position).normalized;
             currentEnemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(Direction.x * 6000, Direction.y * 6000));
             currentEnemy.GetComponent<enemyHealth>().enemyHP -= 1;
+            GameObject newEmptyEmemy = Instantiate(hitEnemy);
+            newEmptyEmemy.transform.position = gameObject.transform.position;
+        }
+        else
+        {
+            GameObject newEmptyWall = Instantiate(hitWall);
+            newEmptyWall.transform.position = gameObject.transform.position;
         }
         
         

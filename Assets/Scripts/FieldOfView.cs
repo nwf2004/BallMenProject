@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FieldOfView : MonoBehaviour
 {
@@ -33,10 +34,14 @@ public class FieldOfView : MonoBehaviour
     public GameObject coneObj;
     public LayerMask walls;
 
+    [Header("Audio")]
+    public AudioSource throwClip;
+
     public string EnemyTag = "Enemy";
     private bool isAttacking = false;
     [SerializeField]
     private flashlightScript FlashLightScript;
+    public Text UIdisplay;
 
     // Start is called before the first frame update
     private void Start()
@@ -50,6 +55,7 @@ public class FieldOfView : MonoBehaviour
     private void Update()
     {
         CheckInputForAttack();
+        UIdisplay.text = "x " + totalFlashlights.ToString();
     }
 
     private void LateUpdate()
@@ -145,6 +151,7 @@ public class FieldOfView : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && flashlightReady == true && !(totalFlashlights <= 0) )
         {
+            throwClip.Play();
             totalFlashlights -= 1;
             newflashLight = Instantiate(flashLight);
             newflashLight.transform.position = transform.position;

@@ -9,12 +9,16 @@ public class Sanity : MonoBehaviour
 
     [SerializeField] Slider slider; //So the values show up on the slider
 
+    [SerializeField]
+    private FieldOfView FOV;
+
     public float sanity;
     public float maxSanity;
 
     public float sanityDrain;
     public float horrorDrain;
     public float originalDrain;
+
 
     public float restore;
 
@@ -72,7 +76,7 @@ public class Sanity : MonoBehaviour
         {
             Debug.Log("Entered Area of Horror");
             inHorror = true;
-            Debug.Log(inHorror);
+            //Debug.Log(inHorror);
 
             sanityDrain = horrorDrain;
         }
@@ -81,7 +85,7 @@ public class Sanity : MonoBehaviour
         {
             sanity += restore;
             audioSource.PlayOneShot(candyClip, .1f); //Play candy eating sound
-            Debug.Log("Health restored");
+            //Debug.Log("Health restored");
             Destroy(collision.gameObject); //Destroy the piece of candy
 
             if (sanity + restore > maxSanity) //So you can't go over the max sanity when you pick up a piece of candy too early
@@ -89,14 +93,20 @@ public class Sanity : MonoBehaviour
                 sanity = maxSanity;
             }
         }
+
+        if (collision.gameObject.tag == "pileoflights")
+        {
+            FOV.totalFlashlights += 20.0f;
+            Destroy(collision.gameObject); //Destroy the piece of candy
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Horror")
         {
-            Debug.Log("Exited Area of Horror");
+            //Debug.Log("Exited Area of Horror");
             inHorror = false;
-            Debug.Log(inHorror);
+            //Debug.Log(inHorror);
 
             sanityDrain = originalDrain;
         }
@@ -106,7 +116,7 @@ public class Sanity : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Hit by Enemy");
+            //Debug.Log("Hit by Enemy");
             sanity -= hitDrain;
             //play hit heartbeat
             audioSource.PlayOneShot(heartbeatClip, .5f);

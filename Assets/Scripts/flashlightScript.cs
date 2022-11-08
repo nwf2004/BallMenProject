@@ -14,6 +14,9 @@ public class flashlightScript : MonoBehaviour
 
     [SerializeField]
     private FieldOfView FOV;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
