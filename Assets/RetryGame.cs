@@ -5,15 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class RetryGame : MonoBehaviour
 {
+    [SerializeField]
+    private string workingScene;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseOver()
     {
-        //if (Player) { }
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene(workingScene);
+
+        }
     }
 }
