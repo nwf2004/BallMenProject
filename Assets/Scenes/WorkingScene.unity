@@ -532,6 +532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: The sister_0
       objectReference: {fileID: 0}
+    - target: {fileID: 8105254978323291444, guid: 79b0341d4584d492fb885ade5bc51a0f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8105254978323291448, guid: 79b0341d4584d492fb885ade5bc51a0f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -98768,6 +98772,10 @@ PrefabInstance:
     - target: {fileID: 8947797221282191780, guid: 578a15b0934da4effb5fed7a0e6733f4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947797221282191780, guid: 578a15b0934da4effb5fed7a0e6733f4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8947797221282191782, guid: 578a15b0934da4effb5fed7a0e6733f4, type: 3}
       propertyPath: slider

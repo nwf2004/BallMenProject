@@ -69,6 +69,10 @@ public class Sanity : MonoBehaviour
         {
             sanitySource.Stop();
         }
+        if (sanity <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
