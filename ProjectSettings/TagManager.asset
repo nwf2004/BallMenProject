@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Horror
   - candy
+  - Bullet
+  - PlayerAim
   layers:
   - Default
   - TransparentFX
@@ -24,8 +26,8 @@ TagManager:
   - ViewCover
   - Door
   - Floor
-  - 
-  - 
+  - Flashlight
+  - Item
   - Out of View Post Process
   - 
   - 

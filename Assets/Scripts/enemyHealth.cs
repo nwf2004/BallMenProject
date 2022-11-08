@@ -19,7 +19,6 @@ public class enemyHealth : MonoBehaviour
     {
             if (enemyHP <= 0.0f)
             {
-            Destroy(EnemySprite);
                 Destroy(gameObject);
             }
     }

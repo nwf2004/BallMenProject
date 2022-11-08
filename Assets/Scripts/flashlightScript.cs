@@ -57,7 +57,7 @@ public class flashlightScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            flashlightBattery += 30;
+            FOV.totalFlashlights += 1;
         }
         CheckInputForAttack();
         

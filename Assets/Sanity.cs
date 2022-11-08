@@ -31,7 +31,7 @@ public class Sanity : MonoBehaviour
     void Update()
     {
         sanity -= sanityDrain * Time.deltaTime;
-        Debug.Log(sanity);
+        //Debug.Log(sanity);
         slider.value = sanity / 100; //So the values show up on the slider
     }
 

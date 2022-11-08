@@ -50,7 +50,7 @@ public class thrownFlashlight : MonoBehaviour
             GameObject currentEnemy = collision.gameObject;
             Vector3 Direction = (currentEnemy.transform.position - transform.position).normalized;
             currentEnemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(Direction.x * 6000, Direction.y * 6000));
-            Debug.Log(currentEnemy.GetComponent<enemyHealth>().enemyHP);
+            currentEnemy.GetComponent<enemyHealth>().enemyHP -= 1;
         }
         
         
