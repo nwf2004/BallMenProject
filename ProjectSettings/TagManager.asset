@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - PlayerAim
   - pileoflights
+  - Sister
   layers:
   - Default
   - TransparentFX
