@@ -102,6 +102,8 @@ MonoBehaviour:
     m_Bits: 128
   PlayerAimObject: {fileID: 0}
   shatterParticle: {fileID: 0}
+  hitWall: {fileID: 1510808749618622340, guid: 7df2c93bd869f462892b8e30fb5e8317, type: 3}
+  hitEnemy: {fileID: 4466920020583165939, guid: ab73e968793f34a2da044749eefafa73, type: 3}
 --- !u!1 &6284905962409357467
 GameObject:
   m_ObjectHideFlags: 0

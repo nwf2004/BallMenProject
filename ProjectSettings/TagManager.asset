@@ -10,6 +10,7 @@ TagManager:
   - candy
   - Bullet
   - PlayerAim
+  - pileoflights
   layers:
   - Default
   - TransparentFX
