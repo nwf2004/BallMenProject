@@ -8983,6 +8983,7 @@ GameObject:
   - component: {fileID: 1061207935}
   - component: {fileID: 1061207938}
   - component: {fileID: 1061207939}
+  - component: {fileID: 1061207940}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -9021,6 +9022,7 @@ MonoBehaviour:
   fieldOfView: {fileID: 0}
   moveSpeed: 5
   rb: {fileID: 1061207932}
+  myAnimator: {fileID: 1061207940}
   sprintSpeed: 10
   slider: {fileID: 1648027805}
   stamina: 0
@@ -9182,6 +9184,26 @@ MonoBehaviour:
   originalDrain: 0.5
   restore: 20
   hitDrain: 5
+--- !u!95 &1061207940
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061207928}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37400fa90e8e69b49b318e7884e82ba6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1064687998
 GameObject:
   m_ObjectHideFlags: 0

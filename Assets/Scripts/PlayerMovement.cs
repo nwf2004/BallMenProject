@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 moveDir;
 
+    public Animator myAnimator;
+    private SpriteRenderer renderer;
+
     //Player Sprinting Stuff
     private float originalSpeed;
     public float sprintSpeed;
@@ -30,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        myAnimator = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
+
         originalSpeed = moveSpeed;
         sprinting = false;
         canSprint = true;
@@ -43,7 +49,16 @@ public class PlayerMovement : MonoBehaviour
     {
         //Processsing Inputs
         ProcessInputs();
+        Animate();
 
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            renderer.flipX = true;
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            renderer.flipX = false;
+        }
         slider.value = stamina / 100;
 
         if (sprinting == true && canSprint) //Currently Sprinting
@@ -116,6 +131,13 @@ public class PlayerMovement : MonoBehaviour
     void Sprint()
     {
         originalSpeed = sprintSpeed;
+    }
+
+    void Animate()
+    {
+        myAnimator.SetFloat("moveX", moveDir.x);
+        myAnimator.SetFloat("moveY", moveDir.y);
+        myAnimator.SetFloat("moveMagnitude", moveDir.magnitude);
     }
 
 }
