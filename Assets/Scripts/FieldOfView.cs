@@ -9,6 +9,7 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Material lightMaterial;
     [SerializeField] private Material brightLightMaterial;
+    public PlayerHide plyHide;
 
     [Header("Cone Properties")]
     public float viewDistance = 50.0f;
@@ -149,7 +150,7 @@ public class FieldOfView : MonoBehaviour
 
     void CheckInputForAttack()
     {
-        if (Input.GetMouseButton(0) && flashlightReady == true && !(totalFlashlights <= 0) )
+        if (Input.GetMouseButton(0) && flashlightReady == true && !(totalFlashlights <= 0) && !plyHide.isHiding)
         {
             throwClip.Play();
             totalFlashlights -= 1;

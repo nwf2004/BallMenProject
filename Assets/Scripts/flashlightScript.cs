@@ -15,7 +15,7 @@ public class flashlightScript : MonoBehaviour
     [SerializeField]
     private FieldOfView FOV;
 
-
+    public PlayerHide plyHide;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,7 @@ public class flashlightScript : MonoBehaviour
             FOV.viewDistance = flashlightBattery;
         }
 
-        if (FOV.flashlightReady == true && flashlightBattery > 0 && !(FOV.totalFlashlights <= 0) )
+        if (FOV.flashlightReady == true && flashlightBattery > 0 && !(FOV.totalFlashlights <= 0) && !plyHide.isHiding)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -56,9 +56,11 @@ public class flashlightScript : MonoBehaviour
             ToggleFlashlight();
         if (flashlightIsOn && (FOV.totalFlashlights <= 0))
             ToggleFlashlight();
-        
+        if (flashlightIsOn && plyHide.isHiding)
+            ToggleFlashlight();
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             FOV.totalFlashlights += 1;
         }

@@ -10,12 +10,14 @@ public class enemyLogic : MonoBehaviour
     public Transform target;
     public Transform[] pathPositions;
     public Transform nextPos;
+    public Transform firstStartPos;
     public int currentPos = 0;
     public float pathUpdateRate;
     public float moveSpeed;
     public float turnSpeed;
     public float nextWaypointDistance;
     public float stopDistance;
+    public PlayerHide plyHide;
     Path myPath;
     int currentWaypoint = 0;
     public bool reachedEnd;
@@ -74,7 +76,9 @@ public class enemyLogic : MonoBehaviour
 
         playerAimObject = GameObject.FindGameObjectWithTag("PlayerAim");
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        plyHide = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHide>();
         InvokeRepeating("distCheck", Random.Range(0, 5), 5);
+        firstStartPos = target;
     }
 
     void pathUpdate()
@@ -90,6 +94,7 @@ public class enemyLogic : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         if (myPath == null || culled)
             return;
 
@@ -108,6 +113,10 @@ public class enemyLogic : MonoBehaviour
             {
                 NextPos();
                 target = nextPos;
+            }
+            if ((target.transform == playerAimObject.transform) && (plyHide.isHiding == true))
+            {
+                target = firstStartPos;
             }
         }
         else
