@@ -126,8 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldOfView: {fileID: 0}
   moveSpeed: 5
-  rb: {fileID: 4763927432077591395}
-  myAnimator: {fileID: 4763927432077591451}
+  rb: {fileID: 0}
+  myAnimator: {fileID: 0}
   sprintSpeed: 10
   slider: {fileID: 0}
   stamina: 0
@@ -138,6 +138,12 @@ MonoBehaviour:
   originalcd: 5
   sprinting: 0
   canSprint: 0
+  audioSource: {fileID: 0}
+  walkSource: {fileID: 0}
+  sprintSource: {fileID: 0}
+  breathClip: {fileID: 8300000, guid: 7b0156f12ecbda84fb3e4a2b1f932a2f, type: 3}
+  isMoving: 0
+  isSprinting: 0
 --- !u!114 &4763927432077591398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +223,13 @@ MonoBehaviour:
   originalDrain: 0.5
   restore: 20
   hitDrain: 5
+  audioSource: {fileID: 0}
+  candyClip: {fileID: 0}
+  hit1Clip: {fileID: 0}
+  hit2Clip: {fileID: 0}
+  heartbeatClip: {fileID: 0}
+  sanitySource: {fileID: 0}
+  isLowSanity: 0
 --- !u!95 &4763927432077591451
 Animator:
   serializedVersion: 4
