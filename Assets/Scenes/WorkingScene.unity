@@ -411,11 +411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.4428
+      value: 3.7558885
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.529995
+      value: 23.5411
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3741,11 +3741,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2620533783164951657, guid: f3a2acda5129243b998bde22802d5614, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2620533783164951659, guid: f3a2acda5129243b998bde22802d5614, type: 3}
       propertyPath: m_Name
       value: PileOfLights (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2620533783164951659, guid: f3a2acda5129243b998bde22802d5614, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2620533783164951575, guid: f3a2acda5129243b998bde22802d5614, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f3a2acda5129243b998bde22802d5614, type: 3}
 --- !u!4 &246845528 stripped
 Transform:
@@ -6787,8 +6796,12 @@ PrefabInstance:
       value: 0.8000001
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.7436128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.7
+      value: 37.4776
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -67543,11 +67556,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.7277548
+      value: 3.4012036
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.8977
+      value: -7.7344
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -74875,15 +74888,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2620533783164951657, guid: f3a2acda5129243b998bde22802d5614, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2620533783164951659, guid: f3a2acda5129243b998bde22802d5614, type: 3}
       propertyPath: m_Name
       value: PileOfLights (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2620533783164951659, guid: f3a2acda5129243b998bde22802d5614, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620533783164951659, guid: f3a2acda5129243b998bde22802d5614, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2620533783164951575, guid: f3a2acda5129243b998bde22802d5614, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f3a2acda5129243b998bde22802d5614, type: 3}
 --- !u!1 &1459839317
 GameObject:
@@ -76200,11 +76222,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.848108
+      value: 3.3646574
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8225
+      value: -4.2341
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -79921,8 +79943,12 @@ PrefabInstance:
       value: 0.8000001
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.66531
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.06
+      value: 46.4487
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -92909,12 +92935,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.032285
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.8
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.79
+      value: 3.9953
       objectReference: {fileID: 0}
     - target: {fileID: 4458186786517970458, guid: 34d61987cc2276148868f98a8f94d8ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -94345,7 +94375,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 828460276, guid: 83e7bcfcc488b2246a515fdb4afeb4ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
