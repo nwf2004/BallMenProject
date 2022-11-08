@@ -94,7 +94,10 @@ public class enemyLogic : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        if ((target.transform == playerAimObject.transform) && (plyHide.isHiding == true))
+        {
+            target = firstStartPos;
+        }
         if (myPath == null || culled)
             return;
 
