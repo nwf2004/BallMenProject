@@ -218,10 +218,17 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 8576
+  lightMaterial: {fileID: 0}
+  brightLightMaterial: {fileID: 0}
   viewDistance: 60
   fov: 0
   targetFov: 60
   rayCount: 75
+  flashLight: {fileID: 0}
+  shootSpeed: 0
+  firingSpeed: 0
+  flashlightReady: 1
+  totalFlashlights: 20
   startingAngle: 0
   personalView: {fileID: 0}
   coneObj: {fileID: 1404661139}
@@ -229,6 +236,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   EnemyTag: Enemy
+  FlashLightScript: {fileID: 0}
 --- !u!114 &33040304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,9 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ffddd2fc37f46f3ae3b18f69b19d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingFlashlightBattery: 50
   flashlightBattery: 300
   flashlightIsOn: 1
   visionCone: {fileID: 1404661139}
+  FOV: {fileID: 0}
 --- !u!1 &33501908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,12 +2371,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pathPositions: []
+  nextPos: {fileID: 0}
+  currentPos: 0
   pathUpdateRate: 0.5
   moveSpeed: 3
   turnSpeed: 10
   nextWaypointDistance: 0.5
   stopDistance: 1.5
   reachedEnd: 0
+  playerAimObject: {fileID: 0}
   viewDist: 50
   fov: 30
   rayCount: 10
@@ -3367,8 +3381,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1f164743bae3254584dd577dcebb956, type: 3}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_SortingOrder
-      value: -10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
@@ -6013,12 +6043,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pathPositions: []
+  nextPos: {fileID: 0}
+  currentPos: 0
   pathUpdateRate: 0.5
   moveSpeed: 3
   turnSpeed: 10
   nextWaypointDistance: 0.5
   stopDistance: 1.5
   reachedEnd: 0
+  playerAimObject: {fileID: 0}
   viewDist: 50
   fov: 30
   rayCount: 10
@@ -6888,7 +6922,7 @@ SpriteRenderer:
   m_Size: {x: 0.96, y: 0.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &817878421
@@ -7322,12 +7356,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pathPositions: []
+  nextPos: {fileID: 0}
+  currentPos: 0
   pathUpdateRate: 0.5
   moveSpeed: 3
   turnSpeed: 10
   nextWaypointDistance: 0.5
   stopDistance: 1.5
   reachedEnd: 0
+  playerAimObject: {fileID: 0}
   viewDist: 50
   fov: 30
   rayCount: 10
@@ -7975,12 +8013,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pathPositions: []
+  nextPos: {fileID: 0}
+  currentPos: 0
   pathUpdateRate: 0.5
   moveSpeed: 3
   turnSpeed: 10
   nextWaypointDistance: 0.5
   stopDistance: 1.5
   reachedEnd: 0
+  playerAimObject: {fileID: 0}
   viewDist: 50
   fov: 30
   rayCount: 10
@@ -9129,8 +9171,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1f164743bae3254584dd577dcebb956, type: 3}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_SortingOrder
-      value: -10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
@@ -9424,6 +9482,12 @@ MonoBehaviour:
   originalcd: 5
   sprinting: 0
   canSprint: 0
+  audioSource: {fileID: 0}
+  walkSource: {fileID: 0}
+  sprintSource: {fileID: 0}
+  breathClip: {fileID: 0}
+  isMoving: 0
+  isSprinting: 0
 --- !u!50 &1061207932
 Rigidbody2D:
   serializedVersion: 4
@@ -9575,6 +9639,13 @@ MonoBehaviour:
   originalDrain: 0.5
   restore: 20
   hitDrain: 5
+  audioSource: {fileID: 0}
+  candyClip: {fileID: 0}
+  hit1Clip: {fileID: 0}
+  hit2Clip: {fileID: 0}
+  heartbeatClip: {fileID: 0}
+  sanitySource: {fileID: 0}
+  isLowSanity: 0
 --- !u!1 &1064687998
 GameObject:
   m_ObjectHideFlags: 0
@@ -20020,8 +20091,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1f164743bae3254584dd577dcebb956, type: 3}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_SortingOrder
-      value: -10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
@@ -23060,8 +23147,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1f164743bae3254584dd577dcebb956, type: 3}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_SortingOrder
-      value: -10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
@@ -23634,8 +23737,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1f164743bae3254584dd577dcebb956, type: 3}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_SortingOrder
-      value: -10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
@@ -25892,12 +26011,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pathPositions: []
+  nextPos: {fileID: 0}
+  currentPos: 0
   pathUpdateRate: 0.5
   moveSpeed: 3
   turnSpeed: 10
   nextWaypointDistance: 0.5
   stopDistance: 1.5
   reachedEnd: 0
+  playerAimObject: {fileID: 0}
   viewDist: 50
   fov: 30
   rayCount: 10
@@ -26715,12 +26838,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pathPositions: []
+  nextPos: {fileID: 0}
+  currentPos: 0
   pathUpdateRate: 0.5
   moveSpeed: 3
   turnSpeed: 10
   nextWaypointDistance: 0.5
   stopDistance: 1.5
   reachedEnd: 0
+  playerAimObject: {fileID: 0}
   viewDist: 50
   fov: 30
   rayCount: 10
@@ -27489,8 +27616,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1f164743bae3254584dd577dcebb956, type: 3}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_SortingOrder
-      value: -10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
@@ -28178,12 +28321,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pathPositions: []
+  nextPos: {fileID: 0}
+  currentPos: 0
   pathUpdateRate: 0.5
   moveSpeed: 3
   turnSpeed: 10
   nextWaypointDistance: 0.5
   stopDistance: 1.5
   reachedEnd: 0
+  playerAimObject: {fileID: 0}
   viewDist: 50
   fov: 30
   rayCount: 10
@@ -29791,11 +29938,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809059, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 21.317322
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809059, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 21.049393
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809059, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29838,20 +29985,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1f164743bae3254584dd577dcebb956, type: 3}
+    - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Color.b
-      value: 0.069318004
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Color.g
-      value: 0.069318004
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Color.r
-      value: 0.4433962
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809084, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_SortingOrder
-      value: -10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548193897341809086, guid: 2695253b53d604942a3403ba4596e8ce, type: 3}
       propertyPath: m_Name
